@@ -12,7 +12,7 @@ Xamarin project deosn't work.
 
 The **CalculateSize** function calculates the size of the message in Protocol Buffer wire format, in bytes.
 
-Encoding and decoding is not so easy [encoding](https://developers.google.com/protocol-buffers/docs/encoding).
+Encoding and decoding is not so easy ([encoding](https://developers.google.com/protocol-buffers/docs/encoding)).
 
 But for the message:
 ```
@@ -30,7 +30,7 @@ where **tag** helds *key value* + *data type*
 
 ## gRPCurl
 
-Tooling is available for gRPC that allows developers to test services without building client apps [doc](https://docs.microsoft.com/en-us/aspnet/core/grpc/test-tools?view=aspnetcore-5.0):
+Tooling is available for gRPC that allows developers to test services without building client apps ([doc](https://docs.microsoft.com/en-us/aspnet/core/grpc/test-tools?view=aspnetcore-5.0)):
 - **gRPCurl** is a command-line tool that provides interaction with gRPC services
 - **gRPCui** builds on top of gRPCurl and adds an interactive web UI for gRPC, similar to tools such as Postman and Swagger UI
 
