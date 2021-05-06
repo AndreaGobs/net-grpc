@@ -4,6 +4,11 @@ using System;
 
 namespace grpc_lib
 {
+    /// <summary>
+    /// Grpc.Core becomes “Maintenance Only”, When: May 2021
+    /// Grpc.Core becomes “Deprecated”, When: May 2022
+    /// </summary>
+    [Obsolete]
     public class ClientCore
     {
         private static byte[] data = new byte[100]; //has to be longer than request data or throws exception

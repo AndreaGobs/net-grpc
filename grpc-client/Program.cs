@@ -9,8 +9,8 @@ namespace grpc_client
         {
             Console.WriteLine("gRPC client tester");
             int count = 0;
-            var client = new ClientCore();
-            //var client = new ClientNet();
+            //var client = new ClientCore();
+            var client = new ClientNet();
 
             while (true)
             {
