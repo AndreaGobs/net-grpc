@@ -6,17 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.37.0" />
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.37.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Protos\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\grpc-server-lib\grpc-server-lib.csproj" />
+    <ProjectReference Include="..\grpc-core-server-lib\grpc-core-server-lib.csproj" />
+    <ProjectReference Include="..\grpc-net-server-lib\grpc-net-server-lib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,16 +4,21 @@ using Grpc.Reflection.V1Alpha;
 using Helloworld;
 using System;
 
-namespace grpc_server_lib
+namespace grpc_core_server_lib
 {
-    public class ServerCore
+    /// <summary>
+    /// Grpc.Core becomes “Maintenance Only”, When: May 2021
+    /// Grpc.Core becomes “Deprecated”, When: May 2022
+    /// </summary>
+    [Obsolete]
+    public class Server
     {
-        public static Server Start(string host, int port)
+        public static Grpc.Core.Server Start(string host, int port)
         {
             var descriptor = Greeter.Descriptor;
             Console.WriteLine("Starting gRPC server, descriptor=" + descriptor);
 
-            Server server = new Server
+            Grpc.Core.Server server = new Grpc.Core.Server
             {
                 Services =
                 {

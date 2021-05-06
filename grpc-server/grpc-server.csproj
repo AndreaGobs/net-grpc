@@ -5,9 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>grpc_server</RootNamespace>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\grpc-server-lib\grpc-server-lib.csproj" />
+    <ProjectReference Include="..\grpc-core-server-lib\grpc-core-server-lib.csproj" />
   </ItemGroup>
 
 </Project>

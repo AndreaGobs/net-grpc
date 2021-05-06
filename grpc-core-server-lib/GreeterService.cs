@@ -3,8 +3,13 @@ using Helloworld;
 using System;
 using System.Threading.Tasks;
 
-namespace grpc_server_lib
+namespace grpc_core_server_lib
 {
+    /// <summary>
+    /// Grpc.Core becomes “Maintenance Only”, When: May 2021
+    /// Grpc.Core becomes “Deprecated”, When: May 2022
+    /// </summary>
+    [Obsolete]
     public class GreeterService : Greeter.GreeterBase
     {
         private int count;

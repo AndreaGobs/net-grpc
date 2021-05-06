@@ -1,4 +1,4 @@
-﻿using grpc_server_lib;
+﻿using grpc_core_server_lib;
 using System;
 
 namespace grpc_server
@@ -7,7 +7,7 @@ namespace grpc_server
     {
         static void Main(string[] args)
         {
-            var server = ServerCore.Start("localhost", 50001);
+            var server = Server.Start("localhost", 50001);
             server.ShutdownTask.Wait();
             Console.WriteLine("Shutdown gRPC server");
             Console.ReadKey();

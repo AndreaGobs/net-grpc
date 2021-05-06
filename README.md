@@ -10,6 +10,12 @@ Xamarin project deosn't work.
 - [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client)
 - [Grpc.AspNetCore.Server](https://www.nuget.org/packages/Grpc.AspNetCore.Server)
 
+### Migration to Grpc.AspNetCore
+
+[Migration to Grpc.AspNetCore](https://docs.microsoft.com/en-us/aspnet/core/grpc/migration?view=aspnetcore-5.0)
+
+Grpc.Tools still depends on Grpc.Core: it's still early to migrate to Grpc.AspNetCore.
+
 ## Protocol buffer
 
 [Language guide - proto3](https://developers.google.com/protocol-buffers/docs/proto3)
