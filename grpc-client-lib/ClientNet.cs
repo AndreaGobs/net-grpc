@@ -1,6 +1,5 @@
 ﻿using Google.Protobuf;
 using Grpc.Net.Client;
-using Grpc.Net.Client.Web;
 using Helloworld;
 using System;
 using System.Net.Http;
@@ -17,13 +16,14 @@ namespace grpc_lib
                 Console.WriteLine(descriptor);
 
                 //build channel
-                // Untrusted certificates should only be used during app development. Production apps should always use valid certificates.
-                var httpHandler = new HttpClientHandler();
-                httpHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator; // Return `true` to allow certificates that are untrusted/invalid
-
                 var channel = GrpcChannel.ForAddress($"http://{host}:{port}", new GrpcChannelOptions
                 {
-                    HttpHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, httpHandler)
+                    //HttpHandler = new GrpcWebHandler(GrpcWebMode.GrpcWeb, httpHandler) //Grpc.Net.Client.Web
+                    HttpHandler = new HttpClientHandler()
+                    {
+                        // Untrusted certificates should only be used during app development. Production apps should always use valid certificates.
+                        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator // Return `true` to allow certificates that are untrusted/invalid
+                    }
                 });
 
                 //build client
