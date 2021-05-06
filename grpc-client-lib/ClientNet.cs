@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using Google.Protobuf;
+using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Helloworld;
 using System;
@@ -8,9 +9,6 @@ namespace grpc_lib
 {
     public class ClientNet
     {
-        private static byte[] data = new byte[100]; //has to be longer than request data or throws exception
-        private static long len = 0;
-
         public void SendTestRequest(string host, int port, string sender, int count)
         {
             try
@@ -33,31 +31,39 @@ namespace grpc_lib
 
                 //build request
                 var request = new HelloRequest { Name = sender + "-" + count, Surname = "abcdefg", Address = "aaaa" };
-                //request to array
-                var req_output_stream = new Google.Protobuf.CodedOutputStream(data);
-                request.WriteTo(req_output_stream);
-                //parse array to request
-                len = req_output_stream.Position;
-                var req = new byte[len];
-                Array.Copy(data, req, len);
-                var parsed_request = HelloRequest.Parser.ParseFrom(req);
 
-                Console.WriteLine($"Sending[{count}]: Size={request.CalculateSize()}, StreamSize={req_output_stream.Position}/{req_output_stream.SpaceLeft}, ToString={request}, Parsed={parsed_request}");
+                //request to array
+                var req = request.ToByteArray();
+                var parsed_request = HelloRequest.Parser.ParseFrom(req);
+                Console.WriteLine($"Sending[{count}]: Size={request.CalculateSize()}, StreamSize={req.Length}, ToString={request}, Parsed={parsed_request}");
+
+                ////request to array
+                //var req_output_stream = new Google.Protobuf.CodedOutputStream(data);
+                //request.WriteTo(req_output_stream);
+                ////parse array to request
+                //len = req_output_stream.Position;
+                //var req = new byte[len];
+                //Array.Copy(data, req, len);
+                //var parsed_request = HelloRequest.Parser.ParseFrom(req);
+                //Console.WriteLine($"Sending[{count}]: Size={request.CalculateSize()}, StreamSize={req_output_stream.Position}/{req_output_stream.SpaceLeft}, ToString={request}, Parsed={parsed_request}");
 
                 //send request
                 var reply = client.SayHello(request);
 
-
                 //response to array
-                var rep_output_stream = new Google.Protobuf.CodedOutputStream(data);
-                reply.WriteTo(rep_output_stream);
-                //parse array to response
-                len = rep_output_stream.Position;
-                var rep = new byte[len];
-                Array.Copy(data, rep, len);
-                var parsed_reply = GetTestReplyFromArray(rep);
+                var rep = reply.ToByteArray();
+                var parsed_reply = HelloReply.Parser.ParseFrom(rep);
+                Console.WriteLine($"Reply[{count}]: Size={reply.CalculateSize()}, StreamSize={rep.Length}, ToString={reply}, Parsed={parsed_reply}");
 
-                Console.WriteLine($"Reply[{count}]: Size={reply.CalculateSize()}, StreamSize={rep_output_stream.Position}/{rep_output_stream.SpaceLeft}, ToString={reply}, Parsed={parsed_reply}");
+                ////response to array
+                //var rep_output_stream = new Google.Protobuf.CodedOutputStream(data);
+                //reply.WriteTo(rep_output_stream);
+                ////parse array to response
+                //len = rep_output_stream.Position;
+                //var rep = new byte[len];
+                //Array.Copy(data, rep, len);
+                //var parsed_reply = GetTestReplyFromArray(rep);
+                //Console.WriteLine($"Reply[{count}]: Size={reply.CalculateSize()}, StreamSize={rep_output_stream.Position}/{rep_output_stream.SpaceLeft}, ToString={reply}, Parsed={parsed_reply}");
             }
             catch (Exception ex)
             {

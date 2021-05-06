@@ -4,9 +4,15 @@ The solution provides intro gRPC application for .NET Core 5.0.
 
 Xamarin project deosn't work.
 
+## The future of gRPC in C#
+
+[The future of gRPC in C#](https://grpc.io/blog/grpc-csharp-future):
+- [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client)
+- [Grpc.AspNetCore.Server](https://www.nuget.org/packages/Grpc.AspNetCore.Server)
+
 ## Protocol buffer
 
-[language guide - proto3](https://developers.google.com/protocol-buffers/docs/proto3)
+[Language guide - proto3](https://developers.google.com/protocol-buffers/docs/proto3)
 
 ### Request and response message
 
@@ -27,6 +33,10 @@ when *name*='Console-1' and *surname*='abcdefg' and *address*='aaaa' the size is
 - 1 (tag) + 1 (surname length) + 7 (surname)
 - 2 (tag) + 1 (address length) + 4 (address)
 where **tag** helds *key value* + *data type*
+
+## gRPC performance improvements in .NET 5
+
+[gRPC performance improvements in .NET 5](https://devblogs.microsoft.com/aspnet/grpc-performance-improvements-in-net-5)
 
 ## gRPCurl
 
