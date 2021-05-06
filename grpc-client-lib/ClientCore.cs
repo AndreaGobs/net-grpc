@@ -14,7 +14,7 @@ namespace grpc_lib
         private static byte[] data = new byte[100]; //has to be longer than request data or throws exception
         private static long len = 0;
 
-        public void SendTestRequest(string host, int port, string sender, int count)
+        public void SendSayHelloRequest(string host, int port, string sender, int count)
         {
             try
             {

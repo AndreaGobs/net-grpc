@@ -33,10 +33,10 @@ namespace xam_grpc
                 //count++;
                 // for Android emulator, use loopback on host machine: https://developer.android.com/studio/run/emulator-networking
                 // 10.0.2.2:50001
-                //client.SendTestRequest("10.0.2.2", 50001, "Xamarin", count);
+                //client.SendSayHelloRequest("10.0.2.2", 50001, "Xamarin", count);
 
-                var data = client.GetTestReplyAsArray();
-                var reply = client.GetTestReplyFromArray(data);
+                var data = client.GetSayHelloTestReplyAsArray();
+                var reply = client.GetSayHelloTestReplyFromArray(data);
                 Console.WriteLine(">" + reply);
             }
             catch (Exception ex)

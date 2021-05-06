@@ -19,10 +19,24 @@ namespace grpc_client
                 {
                     break;
                 }
-                if (key == "s")
+                if (key == "a")
                 {
                     count++;
-                    client.SendTestRequest("localhost", 50001, "Console", count);
+                    client.SendSayHelloRequest("localhost", 50001, "Console", count);
+                }
+                else if (key == "b")
+                {
+                    count++;
+                    client.SendGetHelloRequest("localhost", 50001, "Console", count);
+                }
+                else if (key == "c")
+                {
+                    count++;
+                    client.SendGetStreamHelloRequest("localhost", 50001, "Console", count);
+                }
+                else
+                {
+                    Console.WriteLine("Wrong key");
                 }
             }
         }
